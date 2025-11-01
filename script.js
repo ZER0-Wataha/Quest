@@ -98,17 +98,101 @@ if (canvas) {
     setInterval(drawChart, 5000);
 }
 
-// ========== MARKET DATA SIMULATOR ==========
-// Realistic base prices (as of 2025)
+// ========== REAL MARKET DATA INTEGRATION ==========
 const marketData = {
-    XAUUSD: { base: 2045.00, volatility: 0.003, decimals: 2, prefix: '$' },
-    EURUSD: { base: 1.0876, volatility: 0.0008, decimals: 4, prefix: '' },
-    GBPUSD: { base: 1.2734, volatility: 0.001, decimals: 4, prefix: '' },
-    BTCUSD: { base: 45234.00, volatility: 0.015, decimals: 2, prefix: '$' },
-    US30: { base: 38945.00, volatility: 0.005, decimals: 2, prefix: '' }
+    XAUUSD: {
+        current: 2045.00,
+        previous: 2045.00,
+        decimals: 2,
+        prefix: '$',
+        api: 'metals-api' // Gold price
+    },
+    EURUSD: {
+        current: 1.0876,
+        previous: 1.0876,
+        decimals: 4,
+        prefix: '',
+        api: 'exchangerate' // Forex
+    },
+    GBPUSD: {
+        current: 1.2734,
+        previous: 1.2734,
+        decimals: 4,
+        prefix: '',
+        api: 'exchangerate' // Forex
+    },
+    BTCUSD: {
+        current: 45234.00,
+        previous: 45234.00,
+        decimals: 2,
+        prefix: '$',
+        api: 'coincap' // Crypto
+    },
+    US30: {
+        current: 38945.00,
+        previous: 38945.00,
+        decimals: 2,
+        prefix: '',
+        api: 'yahoo' // Stock index (fallback to simulation)
+    }
 };
 
-// Initialize prices with realistic values
+// Fetch real market data from multiple sources
+async function fetchRealMarketData() {
+    try {
+        // 1. Fetch Forex rates (EUR, GBP) - FREE, NO API KEY
+        const forexResponse = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        if (forexResponse.ok) {
+            const forexData = await forexResponse.json();
+            if (forexData.rates) {
+                // Convert to format we need (rates are inverted, we need USD/XXX not XXX/USD)
+                marketData.EURUSD.current = 1 / forexData.rates.EUR;
+                marketData.GBPUSD.current = 1 / forexData.rates.GBP;
+                console.log('✓ Forex data updated:', { EUR: marketData.EURUSD.current, GBP: marketData.GBPUSD.current });
+            }
+        }
+    } catch (error) {
+        console.log('Forex API fallback to simulation:', error.message);
+    }
+
+    try {
+        // 2. Fetch Bitcoin price - FREE, NO API KEY
+        const btcResponse = await fetch('https://api.coincap.io/v2/assets/bitcoin');
+        if (btcResponse.ok) {
+            const btcData = await btcResponse.json();
+            if (btcData.data && btcData.data.priceUsd) {
+                marketData.BTCUSD.current = parseFloat(btcData.data.priceUsd);
+                console.log('✓ Bitcoin data updated:', marketData.BTCUSD.current);
+            }
+        }
+    } catch (error) {
+        console.log('Bitcoin API fallback to simulation:', error.message);
+    }
+
+    try {
+        // 3. Fetch Gold price - Using free gold API
+        // Alternative: https://data-asg.goldprice.org/dbXRates/USD
+        const goldResponse = await fetch('https://data-asg.goldprice.org/dbXRates/USD');
+        if (goldResponse.ok) {
+            const goldData = await goldResponse.json();
+            if (goldData.items && goldData.items[0]) {
+                // Gold price per ounce
+                marketData.XAUUSD.current = parseFloat(goldData.items[0].xauPrice);
+                console.log('✓ Gold data updated:', marketData.XAUUSD.current);
+            }
+        }
+    } catch (error) {
+        console.log('Gold API fallback to simulation:', error.message);
+    }
+
+    // 4. US30 (Dow Jones) - Would need paid API or web scraping
+    // Using simulation for now. You can add Alpha Vantage or Finnhub with free API key
+
+    // Update UI with new data
+    updateMarketPrices(true);
+}
+
+// Initialize prices with current values
 function initializeMarketPrices() {
     document.querySelectorAll('.ticker-item').forEach(item => {
         const symbol = item.querySelector('.ticker-symbol').textContent.replace('/', '');
@@ -117,17 +201,20 @@ function initializeMarketPrices() {
 
         if (marketData[symbol]) {
             const data = marketData[symbol];
-            const price = data.base;
-            priceEl.textContent = data.prefix + price.toLocaleString('en-US', {
+            priceEl.textContent = data.prefix + data.current.toLocaleString('en-US', {
                 minimumFractionDigits: data.decimals,
                 maximumFractionDigits: data.decimals
             });
+
+            // Initial change is 0%
+            changeEl.textContent = '+0.00%';
+            changeEl.className = 'ticker-change positive';
         }
     });
 }
 
-// Simulate realistic price movements
-function updateMarketPrices() {
+// Update prices on screen
+function updateMarketPrices(isRealData = false) {
     document.querySelectorAll('.ticker-item').forEach(item => {
         const symbol = item.querySelector('.ticker-symbol').textContent.replace('/', '');
         const priceEl = item.querySelector('.ticker-price');
@@ -136,22 +223,30 @@ function updateMarketPrices() {
         if (marketData[symbol]) {
             const data = marketData[symbol];
 
-            // Natural price movement (Brownian motion simulation)
-            const randomWalk = (Math.random() - 0.5) * 2;
-            const meanReversion = (data.base - parseFloat(priceEl.textContent.replace(/[$,]/g, ''))) * 0.01;
-            const change = (randomWalk * data.volatility + meanReversion) * data.base;
+            // If not real data, simulate small movements
+            if (!isRealData && symbol !== 'US30') {
+                // Skip simulation for instruments with real API data
+                return;
+            }
 
-            let currentPrice = parseFloat(priceEl.textContent.replace(/[$,]/g, ''));
-            let newPrice = currentPrice + change;
+            // For US30 and during simulation, add small random movement
+            if (!isRealData || symbol === 'US30') {
+                const volatility = symbol === 'BTCUSD' ? 0.015 :
+                                 symbol === 'US30' ? 0.005 :
+                                 symbol === 'XAUUSD' ? 0.003 : 0.0008;
+                const randomWalk = (Math.random() - 0.5) * 2;
+                const change = randomWalk * volatility * data.current;
+                data.current = data.current + change;
+            }
 
-            // Update price
-            priceEl.textContent = data.prefix + newPrice.toLocaleString('en-US', {
+            // Update price display
+            priceEl.textContent = data.prefix + data.current.toLocaleString('en-US', {
                 minimumFractionDigits: data.decimals,
                 maximumFractionDigits: data.decimals
             });
 
             // Calculate 24h change percentage
-            const changePercent = ((newPrice - data.base) / data.base) * 100;
+            const changePercent = ((data.current - data.previous) / data.previous) * 100;
             const changeText = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%';
 
             // Update change indicator
@@ -174,36 +269,43 @@ if (ticker) {
     const tickerContent = ticker.innerHTML;
     ticker.innerHTML = tickerContent + tickerContent;
 
-    // Initialize with realistic prices
+    // Initialize with current prices
     initializeMarketPrices();
 
-    // Update prices every 3 seconds
-    setInterval(updateMarketPrices, 3000);
+    // Fetch real data immediately on page load
+    fetchRealMarketData();
+
+    // Update real data every 30 seconds (to respect API rate limits)
+    setInterval(fetchRealMarketData, 30000);
+
+    // Add small visual updates every 3 seconds for smooth animation
+    setInterval(() => updateMarketPrices(false), 3000);
 }
 
-// ========== OPTIONAL: REAL API INTEGRATION ==========
-// Uncomment and add your API key to use real data
+// ========== OPTIONAL: ADD API KEYS FOR MORE DATA ==========
+// For US30 (Dow Jones Index), you can add a free API key from:
+// - Alpha Vantage: https://www.alphavantage.co/support/#api-key (free, 25 requests/day)
+// - Finnhub: https://finnhub.io/register (free tier available)
+//
+// Example with Alpha Vantage:
 /*
-async function fetchRealMarketData() {
+const ALPHA_VANTAGE_KEY = 'YOUR_FREE_API_KEY';
+
+async function fetchUS30Data() {
     try {
-        // Example: Alpha Vantage API (free tier available)
-        // const apiKey = 'YOUR_API_KEY_HERE';
-        // const response = await fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=${apiKey}`);
-        // const data = await response.json();
-
-        // Or use ExchangeRate-API (no key needed for basic usage)
-        // const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-        // const data = await response.json();
-
-        // Update marketData with real values
-        // marketData.EURUSD.base = data.rates.EUR;
-
+        const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=DJI&apikey=${ALPHA_VANTAGE_KEY}`);
+        const data = await response.json();
+        if (data['Global Quote']) {
+            marketData.US30.current = parseFloat(data['Global Quote']['05. price']);
+            console.log('✓ US30 data updated:', marketData.US30.current);
+        }
     } catch (error) {
-        console.log('Using simulated data:', error);
+        console.log('US30 API error:', error.message);
     }
 }
-// fetchRealMarketData();
-// setInterval(fetchRealMarketData, 60000); // Update every minute
+
+// Add to fetchRealMarketData() or call separately
+// fetchUS30Data();
 */
 
 
