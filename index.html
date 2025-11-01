@@ -3,83 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zer0_Code - Coding with passion">
-    <title>Zer0_Code</title>
+    <meta name="description" content="Zer0_Code - Professional Trading Solutions">
+    <title>Zer0_Code Trading</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Market Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">
+                <span class="ticker-symbol">BTC/USD</span>
+                <span class="ticker-price" data-crypto="btc">$45,234.56</span>
+                <span class="ticker-change positive">+2.34%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">ETH/USD</span>
+                <span class="ticker-price" data-crypto="eth">$2,456.78</span>
+                <span class="ticker-change positive">+1.23%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">SOL/USD</span>
+                <span class="ticker-price" data-crypto="sol">$98.45</span>
+                <span class="ticker-change negative">-0.56%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">AAPL</span>
+                <span class="ticker-price">$178.32</span>
+                <span class="ticker-change positive">+0.89%</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-symbol">TSLA</span>
+                <span class="ticker-price">$242.67</span>
+                <span class="ticker-change negative">-1.45%</span>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <nav>
-                <div class="logo">Zer0_Code</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+                <div class="logo">
+                    <span class="logo-icon">◈</span>
+                    <span class="logo-text">Zer0_Code</span>
+                    <span class="logo-tag">TRADING</span>
+                </div>
+                <div class="nav-status">
+                    <div class="status-dot"></div>
+                    <span>Markets Open</span>
+                </div>
             </nav>
         </header>
 
         <main>
-            <section id="home" class="hero">
+            <!-- Hero Section -->
+            <section class="hero">
                 <div class="hero-content">
-                    <h1 class="glitch" data-text="Zer0_Code">Zer0_Code</h1>
-                    <p class="tagline">From Zero to Hero in Code</p>
-                    <p class="description">
-                        Witaj w Zer0_Code - miejscu gdzie kod spotyka się z pasją.
-                        Tworzymy, uczymy się i rozwijamy razem.
+                    <div class="hero-badge">Professional Trading Platform</div>
+                    <h1 class="hero-title">
+                        <span class="title-main">Zer0_Code</span>
+                        <span class="title-sub">Trading Terminal</span>
+                    </h1>
+                    <p class="hero-description">
+                        Profesjonalna platforma do analizy rynków finansowych i kryptowalut.
+                        Zaawansowane narzędzia dla inteligentnych inwestorów.
                     </p>
-                    <div class="cta-buttons">
-                        <a href="#about" class="btn btn-primary">Dowiedz się więcej</a>
-                        <a href="#contact" class="btn btn-secondary">Kontakt</a>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" data-count="1250">0</div>
+                            <div class="stat-label">Active Traders</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$<span data-count="12.5">0</span>M</div>
+                            <div class="stat-label">Volume 24h</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" data-count="99.8">0</div>
+                            <div class="stat-label">Uptime %</div>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-graphic">
-                    <div class="code-block">
-                        <span class="code-line"><span class="keyword">const</span> passion = <span class="string">"coding"</span>;</span>
-                        <span class="code-line"><span class="keyword">while</span> (<span class="boolean">true</span>) {</span>
-                        <span class="code-line">  learn();</span>
-                        <span class="code-line">  create();</span>
-                        <span class="code-line">  share();</span>
-                        <span class="code-line">}</span>
+                    <div class="chart-container">
+                        <canvas id="mainChart"></canvas>
                     </div>
                 </div>
             </section>
 
-            <section id="about" class="about">
-                <h2>O nas</h2>
-                <div class="about-grid">
-                    <div class="card">
-                        <div class="card-icon">💻</div>
-                        <h3>Programowanie</h3>
-                        <p>Tworzymy nowoczesne aplikacje i rozwiązania technologiczne</p>
+            <!-- Trading Signals -->
+            <section class="signals-section">
+                <h2 class="section-title">
+                    <span class="title-icon">📊</span>
+                    Live Trading Signals
+                </h2>
+                <div class="signals-grid">
+                    <div class="signal-card bull">
+                        <div class="signal-header">
+                            <span class="signal-type">BUY SIGNAL</span>
+                            <span class="signal-strength">Strong</span>
+                        </div>
+                        <div class="signal-asset">BTC/USD</div>
+                        <div class="signal-price">$45,234.56</div>
+                        <div class="signal-indicator">
+                            <span>RSI: 42</span>
+                            <span>MACD: Bullish</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">🚀</div>
-                        <h3>Innowacje</h3>
-                        <p>Zawsze o krok przed innymi w świecie technologii</p>
+                    <div class="signal-card bear">
+                        <div class="signal-header">
+                            <span class="signal-type">SELL SIGNAL</span>
+                            <span class="signal-strength">Moderate</span>
+                        </div>
+                        <div class="signal-asset">ETH/USD</div>
+                        <div class="signal-price">$2,456.78</div>
+                        <div class="signal-indicator">
+                            <span>RSI: 68</span>
+                            <span>MACD: Bearish</span>
+                        </div>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">🎯</div>
-                        <h3>Cele</h3>
-                        <p>Od zera do mistrzostwa - to nasza droga</p>
+                    <div class="signal-card neutral">
+                        <div class="signal-header">
+                            <span class="signal-type">HOLD</span>
+                            <span class="signal-strength">Neutral</span>
+                        </div>
+                        <div class="signal-asset">SOL/USD</div>
+                        <div class="signal-price">$98.45</div>
+                        <div class="signal-indicator">
+                            <span>RSI: 55</span>
+                            <span>MACD: Neutral</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="contact" class="contact">
-                <h2>Kontakt</h2>
-                <p>Masz pytania? Chcesz współpracować? Daj znać!</p>
-                <div class="contact-info">
-                    <p>📧 Email: <a href="mailto:contact@zer0code.dev">contact@zer0code.dev</a></p>
-                    <p>🐙 GitHub: <a href="https://github.com/ZER0-Wataha" target="_blank">@ZER0-Wataha</a></p>
+            <!-- Portfolio Stats -->
+            <section class="portfolio-section">
+                <h2 class="section-title">
+                    <span class="title-icon">💼</span>
+                    Portfolio Performance
+                </h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <div class="portfolio-label">Total Value</div>
+                        <div class="portfolio-value">$125,432.89</div>
+                        <div class="portfolio-change positive">+$12,543 (11.2%)</div>
+                        <div class="mini-chart" id="miniChart1"></div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-label">Today's P&L</div>
+                        <div class="portfolio-value">+$2,345.67</div>
+                        <div class="portfolio-change positive">+1.87%</div>
+                        <div class="mini-chart" id="miniChart2"></div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-label">Win Rate</div>
+                        <div class="portfolio-value">73.4%</div>
+                        <div class="portfolio-change positive">+2.1% vs avg</div>
+                        <div class="progress-ring">
+                            <svg width="100" height="100">
+                                <circle cx="50" cy="50" r="40" class="progress-ring-bg"></circle>
+                                <circle cx="50" cy="50" r="40" class="progress-ring-fill" data-percent="73.4"></circle>
+                            </svg>
+                            <div class="progress-text">73.4%</div>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <div class="portfolio-label">Total Trades</div>
+                        <div class="portfolio-value">1,247</div>
+                        <div class="portfolio-change positive">+23 today</div>
+                        <div class="trade-breakdown">
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Win:</span>
+                                <span class="breakdown-value positive">915</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Loss:</span>
+                                <span class="breakdown-value negative">332</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="features-section">
+                <h2 class="section-title">
+                    <span class="title-icon">⚡</span>
+                    Advanced Features
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Technical Analysis</h3>
+                        <p>Zaawansowane narzędzia analizy technicznej z dziesiątkami wskaźników</p>
+                        <ul class="feature-list">
+                            <li>50+ Technical Indicators</li>
+                            <li>Custom Chart Templates</li>
+                            <li>Multi-timeframe Analysis</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>Automated Trading</h3>
+                        <p>Inteligentne boty tradingowe działające 24/7 na rynkach globalnych</p>
+                        <ul class="feature-list">
+                            <li>AI-Powered Algorithms</li>
+                            <li>Backtesting Engine</li>
+                            <li>Risk Management Tools</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔔</div>
+                        <h3>Real-time Alerts</h3>
+                        <p>Natychmiastowe powiadomienia o ważnych sygnałach rynkowych</p>
+                        <ul class="feature-list">
+                            <li>Price Alerts</li>
+                            <li>Volume Spikes</li>
+                            <li>News & Events</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Secure Platform</h3>
+                        <p>Najwyższe standardy bezpieczeństwa dla Twoich aktywów</p>
+                        <ul class="feature-list">
+                            <li>2FA Authentication</li>
+                            <li>Cold Storage</li>
+                            <li>Insurance Coverage</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section class="contact-section">
+                <div class="contact-content">
+                    <h2>Rozpocznij Trading</h2>
+                    <p>Dołącz do społeczności profesjonalnych traderów już dziś</p>
+                    <div class="contact-info">
+                        <a href="mailto:trading@zer0code.dev" class="contact-link">
+                            <span class="contact-icon">📧</span>
+                            trading@zer0code.dev
+                        </a>
+                        <a href="https://github.com/ZER0-Wataha" target="_blank" class="contact-link">
+                            <span class="contact-icon">🐙</span>
+                            @ZER0-Wataha
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 Zer0_Code. All rights reserved.</p>
-            <p>Made with ❤️ and code</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">Zer0_Code Trading</div>
+                    <p>Professional trading platform for modern investors</p>
+                </div>
+                <div class="footer-section">
+                    <div class="footer-label">Market Status</div>
+                    <div class="market-status">
+                        <div class="status-indicator active"></div>
+                        <span>All Systems Operational</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zer0_Code Trading. All rights reserved.</p>
+                <p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p>
+            </div>
         </footer>
     </div>
 

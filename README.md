@@ -1,17 +1,19 @@
-# Zer0_Code Website 🚀
+# Zer0_Code Trading Platform 📈
 
-Prosta, nowoczesna strona landing page dla Zer0_Code.
+Profesjonalna, elegancka strona landing page dla platformy tradingowej Zer0_Code.
 
 ## ✨ Funkcje
 
-- Responsywny design (działa na wszystkich urządzeniach)
-- Nowoczesne animacje i efekty
-- Gradientowe tło i glassmorphism
-- Efekt glitch na głównym tytule
-- Płynne przewijanie
-- Efekty parallax
-- Animowane karty
-- Typing effect w bloku kodu
+- **Ciemny, elegancki design** - profesjonalny motyw tradingowy
+- **Live Market Ticker** - animowany pasek z cenami kryptowalut i akcji
+- **Interaktywne wykresy świecowe** - Canvas API z animowanymi candlestick charts
+- **Trading Signals** - karty sygnałów BUY/SELL/HOLD z wskaźnikami
+- **Portfolio Dashboard** - statystyki z animowanymi licznikami
+- **Mini wykresy** - sparklines dla metryk portfolio
+- **Progress Ring** - animowany SVG dla win rate
+- **Responsywny design** - działa na wszystkich urządzeniach
+- **Animowane liczniki** - count-up effect dla statystyk
+- **Złote akcenty** - elegancka kolorystyka bull/bear market
 
 ## 🚀 Jak uruchomić lokalnie
 
@@ -80,19 +82,29 @@ Quest/
 Edytuj zmienne CSS w `style.css`:
 ```css
 :root {
-    --primary-color: #00ff88;
-    --secondary-color: #00d4ff;
-    --dark-bg: #0a0e27;
-    --darker-bg: #050814;
+    --bull-green: #00ff88;    /* Kolor wzrostów */
+    --bear-red: #ff4757;      /* Kolor spadków */
+    --gold: #ffd700;          /* Akcent złoty */
+    --gold-dark: #cc9c00;     /* Ciemniejszy złoty */
+    --dark-bg: #0a0e1a;       /* Tło ciemne */
+    --darker-bg: #050812;     /* Tło najciemniejsze */
 }
 ```
 
 ### Treść
 Edytuj plik `index.html` aby zmienić:
-- Teksty
-- Linki
+- Ceny i symbole w tickerze
+- Trading signals (BUY/SELL/HOLD)
+- Statystyki portfolio
+- Wskaźniki techniczne (RSI, MACD)
 - Informacje kontaktowe
-- Sekcje
+
+### Wykresy
+W `script.js` możesz dostosować:
+- Liczbę świec na wykresie (domyślnie 30)
+- Zakres cen
+- Częstotliwość odświeżania (domyślnie co 5s)
+- Kolory wykresów
 
 ## 📱 Responsywność
 
@@ -103,10 +115,46 @@ Strona automatycznie dostosowuje się do:
 
 ## 🛠️ Technologie
 
-- HTML5
-- CSS3 (Flexbox, Grid, Animations)
-- Vanilla JavaScript (ES6+)
-- Bez frameworków - ultra szybka!
+- **HTML5** - semantyczna struktura
+- **CSS3** - Flexbox, Grid, animacje, transitions
+- **Canvas API** - interaktywne wykresy świecowe
+- **Vanilla JavaScript (ES6+)** - bez zależności
+- **Intersection Observer API** - optymalizowane animacje
+- **SVG** - skalowalna grafika wektorowa (progress ring)
+- **Bez frameworków** - ultra szybka i lekka!
+
+## 📊 Główne komponenty
+
+### 1. Market Ticker
+- Nieskończona animacja scroll
+- Live update cen co 3 sekundy
+- Wskaźniki ▲/▼ dla zmian
+
+### 2. Candlestick Chart
+- Rysowany w czasie rzeczywistym
+- 30 świec z losowymi danymi OHLC
+- Volume bars na dole
+- Auto-refresh co 5 sekund
+- Responsywny (reaguje na resize)
+
+### 3. Trading Signals
+- Bull (zielone), Bear (czerwone), Neutral (szare)
+- Wskaźniki RSI i MACD
+- Hover effects z złotymi akcentami
+
+### 4. Portfolio Dashboard
+- Animowane liczniki (count-up)
+- Mini sparkline charts
+- SVG progress ring z animacją
+- Real-time statystyki
+
+## ⚡ Performance
+
+- Zero external dependencies
+- Lazy loading animations (Intersection Observer)
+- Optimized canvas rendering
+- CSS transforms dla smooth animations
+- Minimalny JavaScript footprint
 
 ## 📝 Licencja
 
@@ -115,10 +163,15 @@ MIT License - możesz używać i modyfikować jak chcesz!
 ## 🤝 Kontakt
 
 - GitHub: [@ZER0-Wataha](https://github.com/ZER0-Wataha)
-- Email: contact@zer0code.dev
+- Email: trading@zer0code.dev
+
+## ⚠️ Disclaimer
+
+Ten projekt to demonstracyjna strona landing page. Nie jest to prawdziwa platforma tradingowa.
+Trading wiąże się z ryzykiem - zawsze inwestuj odpowiedzialnie.
 
 ---
 
-**Made with ❤️ and code by Zer0_Code**
+**Made with 📈 and code by Zer0_Code**
 
-*From Zero to Hero in Code* 🚀
+*Professional Trading Platform for Modern Investors* 💎
