@@ -98,32 +98,113 @@ if (canvas) {
     setInterval(drawChart, 5000);
 }
 
+// ========== MARKET DATA SIMULATOR ==========
+// Realistic base prices (as of 2025)
+const marketData = {
+    XAUUSD: { base: 2045.00, volatility: 0.003, decimals: 2, prefix: '$' },
+    EURUSD: { base: 1.0876, volatility: 0.0008, decimals: 4, prefix: '' },
+    GBPUSD: { base: 1.2734, volatility: 0.001, decimals: 4, prefix: '' },
+    BTCUSD: { base: 45234.00, volatility: 0.015, decimals: 2, prefix: '$' },
+    US30: { base: 38945.00, volatility: 0.005, decimals: 2, prefix: '' }
+};
+
+// Initialize prices with realistic values
+function initializeMarketPrices() {
+    document.querySelectorAll('.ticker-item').forEach(item => {
+        const symbol = item.querySelector('.ticker-symbol').textContent.replace('/', '');
+        const priceEl = item.querySelector('.ticker-price');
+        const changeEl = item.querySelector('.ticker-change');
+
+        if (marketData[symbol]) {
+            const data = marketData[symbol];
+            const price = data.base;
+            priceEl.textContent = data.prefix + price.toLocaleString('en-US', {
+                minimumFractionDigits: data.decimals,
+                maximumFractionDigits: data.decimals
+            });
+        }
+    });
+}
+
+// Simulate realistic price movements
+function updateMarketPrices() {
+    document.querySelectorAll('.ticker-item').forEach(item => {
+        const symbol = item.querySelector('.ticker-symbol').textContent.replace('/', '');
+        const priceEl = item.querySelector('.ticker-price');
+        const changeEl = item.querySelector('.ticker-change');
+
+        if (marketData[symbol]) {
+            const data = marketData[symbol];
+
+            // Natural price movement (Brownian motion simulation)
+            const randomWalk = (Math.random() - 0.5) * 2;
+            const meanReversion = (data.base - parseFloat(priceEl.textContent.replace(/[$,]/g, ''))) * 0.01;
+            const change = (randomWalk * data.volatility + meanReversion) * data.base;
+
+            let currentPrice = parseFloat(priceEl.textContent.replace(/[$,]/g, ''));
+            let newPrice = currentPrice + change;
+
+            // Update price
+            priceEl.textContent = data.prefix + newPrice.toLocaleString('en-US', {
+                minimumFractionDigits: data.decimals,
+                maximumFractionDigits: data.decimals
+            });
+
+            // Calculate 24h change percentage
+            const changePercent = ((newPrice - data.base) / data.base) * 100;
+            const changeText = (changePercent >= 0 ? '+' : '') + changePercent.toFixed(2) + '%';
+
+            // Update change indicator
+            changeEl.textContent = changeText;
+            changeEl.className = 'ticker-change ' + (changePercent >= 0 ? 'positive' : 'negative');
+
+            // Add flash animation on change
+            priceEl.style.animation = 'flash 0.5s ease';
+            setTimeout(() => {
+                priceEl.style.animation = '';
+            }, 500);
+        }
+    });
+}
+
 // ========== TICKER ANIMATION ==========
 const ticker = document.querySelector('.ticker');
 if (ticker) {
     // Duplicate ticker items for seamless loop
     const tickerContent = ticker.innerHTML;
     ticker.innerHTML = tickerContent + tickerContent;
+
+    // Initialize with realistic prices
+    initializeMarketPrices();
+
+    // Update prices every 3 seconds
+    setInterval(updateMarketPrices, 3000);
 }
 
-// Update ticker prices randomly
-function updateTickerPrices() {
-    document.querySelectorAll('.ticker-price').forEach(priceEl => {
-        const currentPrice = parseFloat(priceEl.textContent.replace('$', '').replace(',', ''));
-        const change = (Math.random() - 0.5) * currentPrice * 0.01;
-        const newPrice = currentPrice + change;
+// ========== OPTIONAL: REAL API INTEGRATION ==========
+// Uncomment and add your API key to use real data
+/*
+async function fetchRealMarketData() {
+    try {
+        // Example: Alpha Vantage API (free tier available)
+        // const apiKey = 'YOUR_API_KEY_HERE';
+        // const response = await fetch(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=EUR&to_currency=USD&apikey=${apiKey}`);
+        // const data = await response.json();
 
-        const crypto = priceEl.getAttribute('data-crypto');
-        if (crypto) {
-            priceEl.textContent = '$' + newPrice.toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-        }
-    });
+        // Or use ExchangeRate-API (no key needed for basic usage)
+        // const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        // const data = await response.json();
+
+        // Update marketData with real values
+        // marketData.EURUSD.base = data.rates.EUR;
+
+    } catch (error) {
+        console.log('Using simulated data:', error);
+    }
 }
-
-setInterval(updateTickerPrices, 3000);
+// fetchRealMarketData();
+// setInterval(fetchRealMarketData, 60000); // Update every minute
+*/
 
 
 // ========== FADE-IN ANIMATIONS ==========
