@@ -1491,3 +1491,506 @@ footer {
         padding: 1.5rem 1rem;
     }
 }
+
+/* ========== ENHANCED VISUAL STYLES ========== */
+
+/* Products Section - More Visual */
+.products-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(10, 14, 26, 0.4) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.products-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.product-card {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.9), rgba(10, 14, 26, 0.8));
+    border: 1px solid transparent;
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(145deg, rgba(255, 215, 0, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 16px;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border: 1px solid var(--gold);
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3),
+                0 0 40px rgba(255, 215, 0, 0.1);
+}
+
+.product-header h3 {
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.product-badge {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.1));
+    color: var(--gold);
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.feature-tag {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.1));
+    color: #8be9fd;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.2));
+    border-color: var(--bull-green);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    transform: translateY(-2px);
+}
+
+.product-stats-placeholder {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.02));
+    border: 2px dashed rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-stats-placeholder::before {
+    content: '📊';
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.1;
+}
+
+.btn-product {
+    display: block;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-product::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-product:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-product:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--darker-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+}
+
+/* About Section - More Vibrant */
+.about-section {
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.about-card {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.9), rgba(10, 14, 26, 0.7));
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.05), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.about-card:hover::after {
+    top: -100%;
+    right: -100%;
+}
+
+.about-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 15px 50px rgba(255, 215, 0, 0.25),
+                inset 0 0 20px rgba(255, 215, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.about-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+    transition: all 0.3s ease;
+}
+
+.about-card:hover .about-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+}
+
+.process-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.3));
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--gold);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.process-step:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 0, 0, 0.4));
+    border-left-width: 6px;
+    transform: translateX(5px);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.3);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--darker-bg);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+}
+
+.mql5-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.05));
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    margin-top: 1rem;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+}
+
+.mql5-link:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--darker-bg);
+    transform: translateX(10px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+}
+
+/* Purchase Section - More Engaging */
+.purchase-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(10, 14, 26, 0.5) 100%);
+    position: relative;
+}
+
+.purchase-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--bull-green), transparent);
+}
+
+.step-card {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.9), rgba(5, 8, 18, 0.8));
+    border: 2px solid transparent;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.step-card:hover::before {
+    opacity: 1;
+}
+
+.step-card:hover {
+    border-color: var(--bull-green);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 50px rgba(0, 255, 136, 0.3);
+}
+
+.step-num {
+    background: linear-gradient(135deg, var(--bull-green), #00d4aa);
+    color: var(--darker-bg);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
+    transition: all 0.3s ease;
+}
+
+.step-card:hover .step-num {
+    transform: scale(1.15) rotate(360deg);
+    box-shadow: 0 12px 35px rgba(0, 255, 136, 0.7);
+}
+
+/* Collaboration - More Attractive */
+.collab-card {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.95), rgba(10, 14, 26, 0.85));
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 3.5rem;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.collab-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(0, 255, 136, 0.1),
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.collab-card:hover {
+    border-color: var(--bull-green);
+    box-shadow: 0 20px 70px rgba(0, 255, 136, 0.3),
+                0 0 50px rgba(255, 215, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.collab-badge {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 255, 136, 0.15));
+    color: var(--bull-green);
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid var(--bull-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.btn-collab {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.1));
+    border: 2px solid var(--bull-green);
+    color: var(--bull-green);
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-collab::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-collab:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-collab:hover {
+    background: linear-gradient(135deg, var(--bull-green), #00d4aa);
+    color: var(--darker-bg);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.5);
+}
+
+/* Testimonials Placeholder - More Inviting */
+.testimonials-placeholder {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.6), rgba(5, 8, 18, 0.4));
+    border: 2px dashed rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    animation: slide 3s infinite;
+}
+
+@keyframes slide {
+    100% { left: 100%; }
+}
+
+.placeholder-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Footer Legal - More Readable */
+.footer-disclaimer-section,
+.footer-legal {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.8), rgba(5, 8, 18, 0.6));
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.footer-disclaimer-section h4,
+.footer-legal h4 {
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
