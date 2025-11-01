@@ -1,110 +1,99 @@
-# Zer0_Code Trading Platform 📈
+# ZER0 Wataha Trading - Expert Advisors 🤖
 
-Profesjonalna, elegancka strona landing page dla platformy tradingowej Zer0_Code.
+Professional landing page for Expert Advisor developer specializing in MetaTrader automated trading systems.
 
-## ✨ Funkcje
+## ✨ Features
 
-- **Ciemny, elegancki design** - profesjonalny motyw tradingowy
-- **Live Market Ticker** - animowany pasek z cenami kryptowalut i akcji
-- **Interaktywne wykresy świecowe** - Canvas API z animowanymi candlestick charts
-- **Trading Signals** - karty sygnałów BUY/SELL/HOLD z wskaźnikami
-- **Portfolio Dashboard** - statystyki z animowanymi licznikami
-- **Mini wykresy** - sparklines dla metryk portfolio
-- **Progress Ring** - animowany SVG dla win rate
-- **Responsywny design** - działa na wszystkich urządzeniach
-- **Animowane liczniki** - count-up effect dla statystyk
-- **Złote akcenty** - elegancka kolorystyka bull/bear market
+- **Dark, elegant design** - professional trading theme with gold accents
+- **Live Market Ticker** - animated price feed for XAUUSD, forex, and crypto
+- **Interactive Candlestick Chart** - Canvas API with animated charts
+- **Product Showcase** - 4 Expert Advisors (Zer0_Apex, Zer0_Core, Zer0_Dark_Core, Zer0_Panel)
+- **About Section** - 5 categories (Mission, Specialization, Process, Experience, Instruments)
+- **Purchase Guide** - step-by-step instructions for MQL5 Market
+- **Collaboration Section** - partnership with Wataha Trading Den
+- **Legal Compliance** - comprehensive disclaimer, Terms of Service, and Privacy Policy
+- **Responsive Design** - optimized for all devices
+- **Smooth Animations** - fade-in effects and transitions
 
-## 🚀 Jak uruchomić lokalnie
+## 🚀 Local Development
 
-Wystarczy otworzyć plik `index.html` w przeglądarce!
+Simply open `index.html` in your browser!
 
 ```bash
-# W terminalu:
 open index.html
-# lub po prostu kliknij dwukrotnie na plik
+# or double-click the file
 ```
 
-## 🌐 Darmowy hosting
+## 🌐 Free Hosting
 
-### GitHub Pages (Zalecane - całkowicie za darmo!)
+### GitHub Pages (Recommended)
 
-1. Upewnij się, że twoje repozytorium jest publiczne
-2. Przejdź do Settings → Pages
-3. W sekcji "Source" wybierz branch (np. `main` lub `claude/setup-zer0-code-site-011CUhsjPNFp2rdfg8TuF2q4`)
-4. Kliknij Save
-5. Twoja strona będzie dostępna pod adresem: `https://zer0-wataha.github.io/Quest/`
+1. Make repository public
+2. Go to Settings → Pages
+3. Select source branch: `claude/setup-zer0-code-site-011CUhsjPNFp2rdfg8TuF2q4`
+4. Click Save
+5. Site will be available at: `https://zer0-wataha.github.io/Quest/`
 
-### Netlify
+### Netlify or Vercel
 
-1. Zaloguj się na [netlify.com](https://netlify.com)
-2. Kliknij "Add new site" → "Import an existing project"
-3. Wybierz GitHub i połącz repozytorium
-4. Deploy! Dostaniesz darmową subdomenę typu `nazwa.netlify.app`
-5. Możesz dodać własną domenę w ustawieniach
+Deploy with one click:
+- Netlify: Free subdomain `yourname.netlify.app`
+- Vercel: Free subdomain `yourname.vercel.app`
 
-### Vercel
-
-1. Zaloguj się na [vercel.com](https://vercel.com)
-2. Kliknij "Add New Project"
-3. Import z GitHub
-4. Deploy! Dostaniesz subdomenę `nazwa.vercel.app`
-
-## 🌍 Darmowe domeny
-
-Jeśli chcesz własną domenę (zamiast subdomeny):
-
-### Całkowicie darmowe:
-
-- **Freenom** - domeny .tk, .ml, .ga, .cf, .gq (za darmo na rok)
-- **InfinityFree** - domena z subdomeną .rf.gd, .epizy.com
-- **eu.org** - darmowa subdomena .eu.org
-
-### Tanie opcje (10-15 zł/rok):
-
-- **Namecheap** - domeny .xyz, .online
-- **OVH** - domeny .pl około 20 zł/rok
-- **Cloudflare** - domeny po cenie hurtowej
-
-## 📁 Struktura projektu
+## 📁 Project Structure
 
 ```
 Quest/
-├── index.html      # Główny plik HTML
-├── style.css       # Style CSS
-├── script.js       # JavaScript z animacjami
-└── README.md       # Ten plik
+├── index.html      # Main HTML with all sections
+├── style.css       # Complete styling (880+ lines)
+├── script.js       # Animations and candlestick chart
+└── README.md       # This file
 ```
 
-## 🎨 Personalizacja
+## 📋 Content Sections
 
-### Kolory
-Edytuj zmienne CSS w `style.css`:
-```css
-:root {
-    --bull-green: #00ff88;    /* Kolor wzrostów */
-    --bear-red: #ff4757;      /* Kolor spadków */
-    --gold: #ffd700;          /* Akcent złoty */
-    --gold-dark: #cc9c00;     /* Ciemniejszy złoty */
-    --dark-bg: #0a0e1a;       /* Tło ciemne */
-    --darker-bg: #050812;     /* Tło najciemniejsze */
-}
-```
+### 1. Hero Section
+- Professional trader introduction
+- Expert Advisor developer tagline
+- CTA buttons to MQL5 profile and products
 
-### Treść
-Edytuj plik `index.html` aby zmienić:
-- Ceny i symbole w tickerze
-- Trading signals (BUY/SELL/HOLD)
-- Statystyki portfolio
-- Wskaźniki techniczne (RSI, MACD)
-- Informacje kontaktowe
+### 2. Products (4 Expert Advisors)
+- **Zer0_Apex** - Scalping system for XAUUSD
+- **Zer0_Core** - Swing trading system
+- **Zer0_Dark_Core** - Night trading specialist
+- **Zer0_Panel** - Trading dashboard utility
 
-### Wykresy
-W `script.js` możesz dostosować:
-- Liczbę świec na wykresie (domyślnie 30)
-- Zakres cen
-- Częstotliwość odświeżania (domyślnie co 5s)
-- Kolory wykresów
+Each product card includes:
+- Badge (Premium EA, Core System, Advanced, Utility)
+- Description
+- Feature tags (trading style, instruments, timeframes)
+- Placeholder for backtest results
+- Link to MQL5 Market
+
+### 3. About (5 Categories)
+- **Mission** - Transforming market knowledge into EAs
+- **Specialization** - Scalping, swing, daily trading
+- **Process** - 4-step development (Analysis → Testing → Optimization → Live)
+- **Experience** - Community-backed development with MQL5 link
+- **Instruments** - Primary focus on Gold (XAUUSD), flexible timeframes
+
+### 4. Purchase Section
+- Step-by-step guide for buying through MQL5 Market
+- 4 visual steps with icons
+- Direct link to MQL5 Market
+
+### 5. Collaboration
+- Partnership with Wataha Trading Den
+- Description of collaboration
+- Link to partner site
+
+### 6. Social Proof
+- Placeholder for future testimonials
+
+### 7. Legal (Footer)
+- **Risk Disclaimer** - comprehensive trading risk warning
+- **Terms of Service** - product usage terms
+- **Privacy Policy** - data handling policy
 
 ## 📱 Responsywność
 
@@ -113,65 +102,69 @@ Strona automatycznie dostosowuje się do:
 - Tabletów
 - Telefonów komórkowych
 
-## 🛠️ Technologie
+## 🛠️ Technologies
 
-- **HTML5** - semantyczna struktura
-- **CSS3** - Flexbox, Grid, animacje, transitions
-- **Canvas API** - interaktywne wykresy świecowe
-- **Vanilla JavaScript (ES6+)** - bez zależności
-- **Intersection Observer API** - optymalizowane animacje
-- **SVG** - skalowalna grafika wektorowa (progress ring)
-- **Bez frameworków** - ultra szybka i lekka!
+- **HTML5** - semantic structure with accessibility
+- **CSS3** - Flexbox, Grid, animations, custom properties
+- **Canvas API** - interactive candlestick charts
+- **Vanilla JavaScript (ES6+)** - zero dependencies
+- **Intersection Observer API** - optimized scroll animations
+- **No frameworks** - ultra-fast and lightweight
 
-## 📊 Główne komponenty
+## 🎨 Design System
 
-### 1. Market Ticker
-- Nieskończona animacja scroll
-- Live update cen co 3 sekundy
-- Wskaźniki ▲/▼ dla zmian
+### Colors
+```css
+--bull-green: #00ff88;    /* Bullish/gains */
+--bear-red: #ff4757;      /* Bearish/losses */
+--gold: #ffd700;          /* Primary accent */
+--gold-dark: #cc9c00;     /* Secondary accent */
+--dark-bg: #0a0e1a;       /* Background */
+--darker-bg: #050812;     /* Deepest background */
+```
 
-### 2. Candlestick Chart
-- Rysowany w czasie rzeczywistym
-- 30 świec z losowymi danymi OHLC
-- Volume bars na dole
-- Auto-refresh co 5 sekund
-- Responsywny (reaguje na resize)
+### Key Features
+- **Dark theme** - professional trading aesthetic
+- **Gold accents** - premium branding
+- **Glassmorphism** - translucent cards with blur
+- **Smooth animations** - fade-in on scroll, hover effects
+- **Typography** - system fonts for performance
 
-### 3. Trading Signals
-- Bull (zielone), Bear (czerwone), Neutral (szare)
-- Wskaźniki RSI i MACD
-- Hover effects z złotymi akcentami
+## 🔗 External Links
 
-### 4. Portfolio Dashboard
-- Animowane liczniki (count-up)
-- Mini sparkline charts
-- SVG progress ring z animacją
-- Real-time statystyki
+- **MQL5 Profile**: [https://www.mql5.com/en/users/anovyk](https://www.mql5.com/en/users/anovyk)
+- **MQL5 Market**: [https://www.mql5.com/en/market](https://www.mql5.com/en/market)
+- **Wataha Trading Den**: [https://wataha-trading-den.lovable.app/](https://wataha-trading-den.lovable.app/)
+- **GitHub**: [@ZER0-Wataha](https://github.com/ZER0-Wataha)
+
+## 🎯 Customization
+
+To update content:
+1. **Products** - Edit product cards in HTML (lines 95-182)
+2. **About** - Modify 5 category cards (lines 192-262)
+3. **Ticker** - Update symbols and prices (lines 14-40)
+4. **Legal** - Customize disclaimers and policies (footer section)
 
 ## ⚡ Performance
 
 - Zero external dependencies
 - Lazy loading animations (Intersection Observer)
-- Optimized canvas rendering
-- CSS transforms dla smooth animations
-- Minimalny JavaScript footprint
+- Optimized Canvas rendering
+- CSS transforms for smooth animations
+- Minimal JavaScript (~200 lines)
+- Fast page load times
 
-## 📝 Licencja
+## 📝 License
 
-MIT License - możesz używać i modyfikować jak chcesz!
-
-## 🤝 Kontakt
-
-- GitHub: [@ZER0-Wataha](https://github.com/ZER0-Wataha)
-- Email: trading@zer0code.dev
+MIT License - free to use and modify.
 
 ## ⚠️ Disclaimer
 
-Ten projekt to demonstracyjna strona landing page. Nie jest to prawdziwa platforma tradingowa.
-Trading wiąże się z ryzykiem - zawsze inwestuj odpowiedzialnie.
+This is a landing page for Expert Advisor products. All trading involves substantial risk.
+Past performance is not indicative of future results. See full disclaimer in footer.
 
 ---
 
-**Made with 📈 and code by Zer0_Code**
+**Made with 🤖 and code by ZER0 Wataha Trading**
 
-*Professional Trading Platform for Modern Investors* 💎
+*Professional Expert Advisors for MetaTrader*
