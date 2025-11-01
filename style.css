@@ -1656,6 +1656,159 @@ footer {
     box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
 }
 
+/* Free EA Section */
+.free-ea-section {
+    position: relative;
+    padding: 4rem 0;
+}
+
+.section-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    max-width: 800px;
+    margin: -1rem auto 3rem;
+    line-height: 1.6;
+}
+
+.free-ea-card {
+    border: 2px solid rgba(0, 255, 136, 0.3);
+}
+
+.free-ea-card:hover {
+    border-color: var(--bull-green);
+    box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2),
+                0 0 40px rgba(0, 255, 136, 0.1);
+}
+
+.free-badge {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 255, 136, 0.15));
+    color: var(--bull-green);
+    border: 1px solid var(--bull-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    animation: pulse-green 2s ease-in-out infinite;
+}
+
+.demo-badge {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(0, 212, 255, 0.15));
+    color: #00d4ff;
+    border: 1px solid #00d4ff;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+@keyframes pulse-green {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+    }
+}
+
+.free-ea-benefits {
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 3px solid var(--bull-green);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.free-ea-benefits ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.free-ea-benefits li {
+    color: var(--text-gray);
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.btn-free {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.1));
+    border-color: var(--bull-green);
+    color: var(--bull-green);
+}
+
+.btn-free::before {
+    background: rgba(0, 255, 136, 0.3);
+}
+
+.btn-free:hover {
+    background: linear-gradient(135deg, var(--bull-green), #00cc70);
+    color: var(--darker-bg);
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.4);
+}
+
+.btn-demo {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 212, 255, 0.1));
+    border-color: #00d4ff;
+    color: #00d4ff;
+}
+
+.btn-demo::before {
+    background: rgba(0, 212, 255, 0.3);
+}
+
+.btn-demo:hover {
+    background: linear-gradient(135deg, #00d4ff, #00a3cc);
+    color: var(--darker-bg);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+}
+
+.free-ea-note {
+    background: linear-gradient(145deg, rgba(15, 20, 35, 0.9), rgba(10, 14, 26, 0.7));
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.free-ea-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bull-green), var(--gold), #00d4ff);
+}
+
+.free-ea-note h4 {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.free-ea-note ol {
+    color: var(--text-gray);
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.free-ea-note ol li {
+    padding: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.note-disclaimer {
+    background: rgba(255, 215, 0, 0.1);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.note-disclaimer strong {
+    color: var(--gold);
+}
+
 /* About Section - More Vibrant */
 .about-section {
     position: relative;

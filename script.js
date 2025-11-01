@@ -127,13 +127,6 @@ const marketData = {
         decimals: 2,
         prefix: '$',
         api: 'coincap' // Crypto
-    },
-    US30: {
-        current: 38945.00,
-        previous: 38945.00,
-        decimals: 2,
-        prefix: '',
-        api: 'yahoo' // Stock index (fallback to simulation)
     }
 };
 
@@ -185,9 +178,6 @@ async function fetchRealMarketData() {
         console.log('Gold API fallback to simulation:', error.message);
     }
 
-    // 4. US30 (Dow Jones) - Would need paid API or web scraping
-    // Using simulation for now. You can add Alpha Vantage or Finnhub with free API key
-
     // Update UI with new data
     updateMarketPrices(true);
 }
@@ -223,20 +213,9 @@ function updateMarketPrices(isRealData = false) {
         if (marketData[symbol]) {
             const data = marketData[symbol];
 
-            // If not real data, simulate small movements
-            if (!isRealData && symbol !== 'US30') {
-                // Skip simulation for instruments with real API data
+            // Real data updates only - no simulation needed
+            if (!isRealData) {
                 return;
-            }
-
-            // For US30 and during simulation, add small random movement
-            if (!isRealData || symbol === 'US30') {
-                const volatility = symbol === 'BTCUSD' ? 0.015 :
-                                 symbol === 'US30' ? 0.005 :
-                                 symbol === 'XAUUSD' ? 0.003 : 0.0008;
-                const randomWalk = (Math.random() - 0.5) * 2;
-                const change = randomWalk * volatility * data.current;
-                data.current = data.current + change;
             }
 
             // Update price display
@@ -277,36 +256,7 @@ if (ticker) {
 
     // Update real data every 30 seconds (to respect API rate limits)
     setInterval(fetchRealMarketData, 30000);
-
-    // Add small visual updates every 3 seconds for smooth animation
-    setInterval(() => updateMarketPrices(false), 3000);
 }
-
-// ========== OPTIONAL: ADD API KEYS FOR MORE DATA ==========
-// For US30 (Dow Jones Index), you can add a free API key from:
-// - Alpha Vantage: https://www.alphavantage.co/support/#api-key (free, 25 requests/day)
-// - Finnhub: https://finnhub.io/register (free tier available)
-//
-// Example with Alpha Vantage:
-/*
-const ALPHA_VANTAGE_KEY = 'YOUR_FREE_API_KEY';
-
-async function fetchUS30Data() {
-    try {
-        const response = await fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=DJI&apikey=${ALPHA_VANTAGE_KEY}`);
-        const data = await response.json();
-        if (data['Global Quote']) {
-            marketData.US30.current = parseFloat(data['Global Quote']['05. price']);
-            console.log('✓ US30 data updated:', marketData.US30.current);
-        }
-    } catch (error) {
-        console.log('US30 API error:', error.message);
-    }
-}
-
-// Add to fetchRealMarketData() or call separately
-// fetchUS30Data();
-*/
 
 
 // ========== FADE-IN ANIMATIONS ==========
@@ -319,7 +269,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1, rootMargin: '-50px' });
 
-document.querySelectorAll('.product-card, .about-card, .step-card, .collab-card').forEach(el => {
+document.querySelectorAll('.product-card, .about-card, .step-card, .collab-card, .free-ea-note').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
