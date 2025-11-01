@@ -32,73 +32,11 @@ body {
     margin: 0 auto;
 }
 
-/* Market Ticker */
-.ticker-wrap {
-    background: rgba(0, 0, 0, 0.4);
-    border-bottom: 1px solid var(--border-color);
-    overflow: hidden;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    backdrop-filter: blur(10px);
-}
-
-.ticker {
-    display: flex;
-    animation: scroll 30s linear infinite;
-    padding: 0.5rem 0;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-.ticker-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0 2rem;
-    white-space: nowrap;
-    font-size: 0.9rem;
-}
-
-.ticker-symbol {
-    color: var(--text-light);
-    font-weight: 600;
-}
-
-.ticker-price {
-    color: var(--text-muted);
-    font-family: 'Courier New', monospace;
-}
-
-.ticker-change {
-    font-weight: 600;
-    font-size: 0.85rem;
-}
-
-.ticker-change.positive {
-    color: var(--bull-green);
-}
-
-.ticker-change.positive::before {
-    content: '▲ ';
-}
-
-.ticker-change.negative {
-    color: var(--bear-red);
-}
-
-.ticker-change.negative::before {
-    content: '▼ ';
-}
-
 /* Navigation */
 header {
     padding: 1rem 2rem;
     position: sticky;
-    top: 37px;
+    top: 0;
     z-index: 998;
     background: rgba(10, 14, 26, 0.95);
     backdrop-filter: blur(15px);
@@ -771,11 +709,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .ticker-item {
-        padding: 0 1rem;
-        font-size: 0.8rem;
-    }
-
     .logo {
         font-size: 1.2rem;
     }
@@ -2148,43 +2081,3 @@ footer {
     gap: 0.75rem;
 }
 
-/* Price Flash Animation */
-@keyframes flash {
-    0%, 100% { background: transparent; }
-    50% { background: rgba(255, 215, 0, 0.2); }
-}
-
-.ticker-price {
-    transition: all 0.3s ease;
-}
-
-/* Enhanced ticker styling */
-.ticker-item {
-    position: relative;
-}
-
-.ticker-item::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 60%;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.ticker-item:last-child::after {
-    display: none;
-}
-
-.ticker-symbol {
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.ticker-price {
-    font-variant-numeric: tabular-nums;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-}
