@@ -419,6 +419,26 @@ nav {
     height: 100%;
 }
 
+.hero-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.6));
+    }
+    50% {
+        transform: translateY(-15px) scale(1.05);
+        filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.9));
+    }
+}
+
 /* Section Styling */
 section {
     padding: 4rem 2rem;
