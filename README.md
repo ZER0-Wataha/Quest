@@ -1,4 +1,4 @@
-# ZER0 Wataha Trading - Expert Advisors 🤖
+# ZER0 Code - Expert Advisors 🤖
 
 Professional landing page for Expert Advisor developer specializing in MetaTrader automated trading systems.
 
@@ -30,7 +30,7 @@ open index.html
 
 1. Make repository public
 2. Go to Settings → Pages
-3. Select source branch: `claude/setup-zer0-code-site-011CUhsjPNFp2rdfg8TuF2q4`
+3. Select source branch: `claude/add-logo-image-011CUjWdxQVjTbUsmwYZiex1`
 4. Click Save
 5. Site will be available at: `https://zer0-wataha.github.io/Quest/`
 
@@ -165,6 +165,6 @@ Past performance is not indicative of future results. See full disclaimer in foo
 
 ---
 
-**Made with 🤖 and code by ZER0 Wataha Trading**
+**Made with 🤖 and code by ZER0 Code**
 
 *Professional Expert Advisors for MetaTrader*
